@@ -1,0 +1,20 @@
+<app-window name="Portfolio" [showName]="member.name" *ngIf="member$ | async as member">
+    <div class="member">
+        <img class="member__image" [src]="member.imageUrl">
+        <div class="member__details">
+            <h1 class="member__name">{{ member.name }}</h1>
+            <p class="member__quote">{{ member.quote }}</p>
+            <div class="member__social-links-wrapper">
+                <a *ngIf="member.Facebook?.trim()" [href]="member.Facebook" target="_blank">
+                    <div></div>
+                </a>
+                <a *ngIf="member.Github?.trim()" [href]="member.Github" target="_blank">
+                    <div></div>
+                </a>
+                <a *ngIf="member.Instagram?.trim()" [href]="member.Instagram" target="_blank">
+                    <div></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</app-window>

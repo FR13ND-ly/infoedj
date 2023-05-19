@@ -1,0 +1,65 @@
+.member {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 1rem;
+    padding-bottom: 1.2rem;
+    gap: .7rem;
+    &__image {
+        flex-shrink: 0;
+        overflow: hidden;
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    &__name {
+        font-weight: bold;
+        margin-bottom: .5rem;
+        color: #003256;
+    }
+    &__social-links-wrapper {
+        display: flex;
+        width: 100%;
+        bottom: 5%;
+        column-gap: .5rem;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            padding: .1rem;
+            background-color: rgba(var(--primary-color), .1);
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: .2s;
+            &:hover {
+                background-color: rgba(var(--primary-color), .3);
+            }
+            &:active {
+                outline: 1px solid rgb(var(--primary-color));
+            }
+            div {
+                width: 17px;
+                height: 17px;
+                background-color: rgb(var(--primary-color));
+                mask-repeat: no-repeat;
+                mask-size: cover;
+                
+            }
+            &:nth-of-type(1) div {
+                mask-image: url("/assets/socials/facebook.webp");
+            }
+            &:nth-of-type(2) div {
+                mask-image: url("/assets/socials/github.webp");
+            }
+            &:nth-of-type(3) div {
+                mask-image: url("/assets/socials/instagram.webp");
+            }
+        }
+    }
+}

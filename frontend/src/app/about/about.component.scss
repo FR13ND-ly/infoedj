@@ -1,0 +1,29 @@
+.content {
+    background-color: #2e71a3;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    padding: .5rem;
+    color: #003256;
+    height: 100%;
+    text-align: center;
+    overflow: auto;
+}
+
+.title {   
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-size: 10rem;
+    text-shadow: 6px 6px 0px rgb(0 0 0 / 20%);
+    line-height: normal;
+    
+    @media only screen and (max-width: 600px) {
+        font-size: 6rem;
+    }
+}
+
+.description {
+    width: 95%;
+    margin-bottom: 5%;
+}

@@ -1,0 +1,50 @@
+.folder-content {
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    overflow: auto;
+    flex-wrap: wrap;
+    padding: .5rem;
+    gap: .5rem;
+  }
+  
+  .file {
+    text-align: center;
+    user-select: none;
+    width: 15%;
+    max-width: 100px;
+    min-width: 80px;
+    padding: .5rem;
+    border-radius: 2px;
+    height: fit-content;
+    position: relative;
+    &__image {
+      object-fit: cover;
+      overflow: hidden;
+      width: 100%;
+      height: 90px;
+      border-radius: 6px;
+      user-select: none;
+      transition: .2s;
+    }
+    &__name {
+      font-size: .8rem;
+    }
+    &:hover {
+      .file__image {
+        border-radius: 20px;
+        user-select: none;
+      }
+      background-color: rgba(var(--primary-color), .2);
+    }
+    &:focus {
+      background-color: rgba(var(--primary-color), .3);
+      user-select: initial;
+      .file__image {
+        border-radius: 16px;
+      }
+    }
+    &:focus:active {
+      background-color: rgba(var(--primary-color), .4);
+    }
+  }

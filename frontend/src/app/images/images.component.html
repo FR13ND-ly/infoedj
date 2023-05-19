@@ -1,0 +1,13 @@
+<app-window name="Images">
+  <div class="folder-content">
+    <div
+      class="file"
+      *ngFor="let item of images; let i = index"
+      tabindex="-1"
+      (click)="onOpenMob(i)"
+      (dblclick)="onOpenImage(i)">
+      <img class="file__image" [src]="item.imageUrl" />
+      <p>{{ item.name }}.img</p>
+    </div>
+  </div>
+</app-window>

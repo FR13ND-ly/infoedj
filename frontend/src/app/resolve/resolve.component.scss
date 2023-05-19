@@ -1,0 +1,90 @@
+.content {
+    display: flex;
+    padding: 1rem 1.2rem;
+    box-sizing: border-box;
+    position: relative;
+    height: inherit;
+    
+}
+.question {
+    display: flex;
+    margin-top: .2rem;
+    margin-bottom: .5rem;
+    font-size: 1.6rem;
+    line-height: normal;
+    &__index {
+        color: rgb(var(--primary-color));
+        font-weight: bold;
+    }
+}
+.input {
+    border-radius: 6px;
+    padding: .5rem;
+    outline: none;
+    color: var(--text-color);
+    background-color: rgba(var(--primary-color), .1);
+    border: 1px solid rgba(var(--primary-color), 1);
+}
+
+.message-wrapper {
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 2.25rem);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    top: 0;
+    left: 0; 
+    animation: overlayShow .2s forwards;
+}
+
+
+.message {
+    padding: 1rem 1.6rem;
+    background-color: #fff;
+    border-radius: 6px;
+    height: fit-content;
+    margin-top: 20%;
+    opacity: 0;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: normal;
+    animation: messageShow .3s .2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    color: #ffea00;
+    &--correct {
+        color: #00e676;
+    }
+    &--incorrect {
+        color: #f44336;
+    }
+}
+
+.form {
+    display: grid;
+    align-items: flex-start;
+    height: fit-content;
+    button {
+        margin-top: -.5rem;
+        width: fit-content;
+    }
+}
+
+@keyframes overlayShow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgba(0, 0, 0, .7);
+    }
+}
+
+@keyframes messageShow {
+    from {
+        opacity: 0;
+        transform: translateY(-50vh);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,31 @@
+<ng-container
+  *ngIf="{
+    windows: windows$ | async,
+    minimalizeds: minimizeds$ | async
+  } as vs">
+  <app-settings *ngIf="vs.windows.includes('settings')" [class.hide]="vs.minimalizeds.includes('settings')"></app-settings>
+  <app-gallery *ngIf="vs.windows.includes('gallery')" [class.hide]="vs.minimalizeds.includes('gallery')"></app-gallery>
+  <app-team *ngIf="vs.windows.includes('team')" [class.hide]="vs.minimalizeds.includes('team')"></app-team>
+  <app-alumni *ngIf="vs.windows.includes('alumni')" [class.hide]="vs.minimalizeds.includes('alumni')"></app-alumni>
+  <app-cl *ngIf="vs.windows.includes('cl')" [class.hide]="vs.minimalizeds.includes('cl')"></app-cl>
+  <app-events *ngIf="vs.windows.includes('events')" [class.hide]="vs.minimalizeds.includes('events')"></app-events>
+  <app-image *ngIf="vs.windows.includes('image')" [class.hide]="vs.minimalizeds.includes('image')"></app-image>
+  <app-portfolio *ngIf="vs.windows.includes('portfolio')" [class.hide]="vs.minimalizeds.includes('portfolio')"></app-portfolio>
+  <app-about *ngIf="vs.windows.includes('about')" [class.hide]="vs.minimalizeds.includes('about')"></app-about>
+  <app-event *ngIf="vs.windows.includes('event')" [class.hide]="vs.minimalizeds.includes('event')"></app-event>
+  <app-images *ngIf="vs.windows.includes('images')" [class.hide]="vs.minimalizeds.includes('images')"></app-images>
+  <app-chess *ngIf="vs.windows.includes('chess')" [class.hide]="vs.minimalizeds.includes('chess')"></app-chess>
+  <app-downloads *ngIf="vs.windows.includes('downloads')" [class.hide]="vs.minimalizeds.includes('downloads')"></app-downloads>
+  <app-resolve *ngIf="vs.windows.includes('resolve')" [class.hide]="vs.minimalizeds.includes('resolve')"></app-resolve>
+  <app-reviews *ngIf="vs.windows.includes('reviews')" [class.hide]="vs.minimalizeds.includes('reviews')"></app-reviews>
+</ng-container>
+<div class="notifications" *ngIf="notifications$ | async as notifications">
+  <a [href]="notification.url" target="_blank" (click)="onClose(notification.id, notificationRef)" [style.animation-delay.s]="i * .05" class="notification mat-elevation-z8" *ngFor="let notification of notifications; let i = index" #notificationRef>
+    <img class="notification__image" [src]="notification.previewImg">
+    <div class="notification__content-wrapper">
+      <mat-icon class="notification__close-button" (click)="onClose(notification.id, notificationRef, false)">close</mat-icon>
+      <b class="notification__title">{{ notification.title }}</b>
+      <p class="notification__body">{{ notification.body }}</p>
+    </div>
+  </a>
+</div>

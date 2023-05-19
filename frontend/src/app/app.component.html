@@ -1,0 +1,8 @@
+<app-boot-screen *ngIf="!loaded" (boot)="onBoot()"></app-boot-screen>
+<main *ngIf="loaded">
+  <app-overlay></app-overlay>
+  <section class="workspace">
+    <app-bar></app-bar>
+    <app-desktop></app-desktop>
+  </section>
+</main>

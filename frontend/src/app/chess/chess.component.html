@@ -1,0 +1,13 @@
+<app-window name="Chess">
+    <div class="board" [class.board--next]="next" *ngIf="{ position : position$ | async } as vs">
+        <div 
+            class="position" 
+            (click)="onClick(i, vs.position)"
+            [class.black]="getPos(i)"
+            [class.position--wrong]="i == wrong"
+            [class.position--selected]="i == selectedPiece"  
+            *ngFor="let piece of vs.position; let i = index;">
+            <img class="piece" src="/assets/chess/{{piece.piece}}.png" *ngIf="piece.piece">
+        </div>
+    </div>
+</app-window>

@@ -1,0 +1,48 @@
+
+<ng-container *ngIf="windows$ | async as windows" >
+  <div
+    class="window"
+    [ngClass]="{
+      'console' : name == 'cl',
+      'portfolio' : name == 'Portfolio',
+      'image' : name == 'Image',
+      'event' : name == 'Event',
+      'chess' : name == 'Chess',
+      'unresizble' : isUnresizeble(),
+      'vim' : showName == 'Vim',
+      'unactive' : windows.indexOf(name.toLowerCase()) != windows.length - 1
+    }"
+    [style.z-index]="windows.indexOf(name.toLowerCase()) + 10"
+    cdkDrag 
+    cdkDragBoundary="main"
+    #window
+    (cdkDragStarted)="onDragStart()"
+    (mousedown)="onSetInFront()">
+    <div class="window__top-bar" cdkDragHandle (dblclick)="onFullScreen()">
+      <section class="window__description">
+        <img class="window__icon" [src]="getImgUrl(name)">
+        <span class="window__name">{{ showName ?? name }}</span>
+      </section>
+      <section class="window__actions">
+        <div class="window__minimalize-button" (click)="onMinimalize()"><mat-icon>minimize</mat-icon></div>
+        <div class="window__full-screen-button" (click)="onFullScreen()"><mat-icon>fullscreen{{ fullscreen ? '_exit' : '' }}</mat-icon></div>
+        <div class="window__close-button" (click)="onClose()"><mat-icon>close</mat-icon></div>
+      </section>
+    </div>
+    <div class="window__inner">
+      <div class="navigation-pane" *ngIf="isFolder()">
+        <div
+          class="navigation-pane-item"
+          [class.navigation-pane-item--selected]="navigationPaneItem.showName == name"
+          *ngFor="let navigationPaneItem of navigationPaneItems"
+          (mouseup)="onOpenNavigationPaneItem(navigationPaneItem.name, $event)">
+            <img [src]="getImgUrl(navigationPaneItem.name)">
+            <span>{{ navigationPaneItem.showName }}</span>
+        </div>
+      </div>
+      <div class="window__content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</ng-container>

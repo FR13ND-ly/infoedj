@@ -1,0 +1,16 @@
+<app-window name="cl" [showName]="title">
+  <div class="cl" #cl>
+    <div class="content" [innerHTML]="content"></div>
+    <p *ngIf="init"></p>
+    <div class="input">
+      <div class="dir" *ngIf="!vim" [innerHTML]="dir$ | async"></div> 
+      <input
+        #consoleInput
+        [(ngModel)]="inputs[indexOfInput]"
+        class="console-input"
+        spellcheck="false"
+        (keydown)="onInput($event)"
+        cdkTrapFocus/>
+      </div>
+  </div>
+</app-window>

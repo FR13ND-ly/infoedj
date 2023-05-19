@@ -1,0 +1,17 @@
+<div class="desktop">
+  <div
+    class="app"
+    *ngFor="let file of files"
+    (click)="onOpenMob(file.name)"
+    (dblclick)="onOpen(file.name)"
+    (cdkDragReleased)="onDragReleased(app, file.name)"
+    [style.transform]="file.pos"
+    tabindex="-1"
+    [attr.data-app]="file.name"
+    cdkDrag
+    cdkDragBoundary="app-desktop"
+    #app>
+    <img class="app__image" [src]="file.imageUrl" />
+    <p class="app__name">{{ file.showName }}</p>
+  </div>
+</div>

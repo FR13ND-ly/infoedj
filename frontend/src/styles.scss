@@ -1,0 +1,65 @@
+@use '/src/assets/styles/utilites';
+@use '/src/assets/styles/themes';
+
+.background-image {
+  &-0 {
+    --bg-image: url("/assets/bg/bg-1.webp");
+  }
+  &-1 {
+    --bg-image: url("/assets/bg/bg-2.webp");
+  }
+}
+
+.primary-color {
+  &-0 {
+    --primary-color: 0, 188, 212;
+  }
+  &-1 {
+    --primary-color: 76, 175, 80;
+  }
+  &-2 {
+    --primary-color: 244, 67, 54;
+  }
+  &-3 {
+    --primary-color: 33, 150, 243;
+  }
+  &-4 {
+    --primary-color: 156, 39, 176;
+  }
+  &-5 {
+    --primary-color: 255, 152, 0;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--text-color);
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.workspace {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 1vw;
+  box-sizing: border-box;
+}
+
+app-desktop {
+  width: 100%;
+}
+
+@keyframes appear {
+  from { transform: scale(0);}
+  to { transform: scale(1);}
+}

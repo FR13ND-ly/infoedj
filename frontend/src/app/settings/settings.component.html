@@ -1,0 +1,51 @@
+<app-window name="Settings">
+    <div class="settings">
+        <div class="content">
+            <h1>System color</h1>
+            <div class="colors">
+                <div
+                    class="color"
+                    [class.selected]="i == selectedColor"
+                    [style.background-color]="color"
+                    *ngFor="let color of colors; let i = index"
+                    (click)="onSetPrimaryColor(i)">
+                    <mat-icon class="done">done</mat-icon>
+                </div>
+            </div>
+            <h1>Desktop image background</h1>
+            <div class="bg-images">
+                <div
+                    class="background-image"
+                    [class.selected]="i == selectedBackgroundImage"
+                    (click)="onSetBackgroundImage(i)"
+                    *ngFor="let backgroundImage of backgroundImages; let i = index">
+                    <img [src]="backgroundImage" />
+                    <mat-icon class="done">done</mat-icon>
+                </div>
+            </div>
+            <button
+                class="reset-pos-btn"
+                (click)="onResetFoldersPosition()"
+                mat-stroked-button
+                color="primary">
+                Reset folders position
+            </button>
+        </div>
+        <div class="actions">
+            <button
+                class="change-theme-button"
+                mat-icon-button
+                (click)="onChangeTheme()">
+                <mat-icon>brightness_4</mat-icon>
+            </button>
+            <ng-container *ngIf="{ user: user$ | async } as vs">
+                <button mat-icon-button (click)="onLogout()" *ngIf="vs.user">
+                    <mat-icon>logout</mat-icon>
+                </button>
+                <button mat-icon-button (click)="onLogin()" *ngIf="!vs.user">
+                    <mat-icon>login</mat-icon>
+                </button>
+            </ng-container>
+        </div>
+    </div>
+</app-window>

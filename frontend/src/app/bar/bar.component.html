@@ -1,0 +1,45 @@
+<ng-container *ngIf="{ windows: windows$ | async, minimizeds: minimizeds$ | async } as vs">
+  <div class="bar">
+    <div class="bar__left-side" cdkDropList (cdkDropListDropped)="drop($event)">
+      <div class="bar__menu" (click)="onOpenAbout()">
+        <img
+          class="bar__menu-img"
+          [src]="getIcon('cyliis')"/>
+      </div>
+      <div class="bar__apps">
+        <div
+          class="bar-app bar-app-{{ minimized }}"
+          [class.app--selected]="vs.windows.indexOf(minimized) == vs.windows.length - 1"
+          [class.app--minimized]="vs.minimizeds.includes(minimized)"
+          *ngFor="let minimized of list"
+          cdkDrag
+          cdkDragBoundary=".bar__apps"
+          (mouseup)="onMaximize(
+              minimized,
+              vs.minimizeds,
+              vs.windows.indexOf(minimized) == vs.windows.length - 1,
+              $event)">
+          <mat-icon class="bar-app__close-button" (click)="onClose(minimized)">close</mat-icon>
+          <img
+            class="bar-app__img"
+            [matTooltip]="minimized"
+            matTooltipPosition="right"
+            [src]="getIcon(minimized)"/>
+        </div>
+      </div>
+    </div>
+    <div class="bar__right-side" *ngIf="time$ | async as time" >
+      <div class="bar__time" tabindex="-1">
+        <p class="bar__time-hour">
+          {{ getTime(time) }}<br>
+          <b class="bar__time-day">{{ getDayName(time) }}</b>
+        </p>
+        <div class="bar__info">
+          <img class="bar__settings-img" [src]="getIcon('settings')" (click)="onOpenSettings()" />
+          <b class="bar__info-hour">{{ getTime(time) }}</b>
+          <p>{{ getDate(time) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

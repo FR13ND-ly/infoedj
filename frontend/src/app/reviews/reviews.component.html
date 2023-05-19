@@ -1,0 +1,23 @@
+<app-window name="Reviews">
+    <div class="content" *ngIf="reviews$ | async as reviews">
+        <form class="form" (submit)="onAddReview(addForm, reviews)" #addForm="ngForm">
+            <div class="form__inputs">
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput ngModel name="username" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Write a review...</mat-label>
+                    <textarea matInput ngModel name="content" required></textarea>
+                </mat-form-field>
+            </div>
+            <button mat-icon-button><mat-icon>send</mat-icon></button>
+        </form>
+        <section class="reviews" >
+            <article class="review" *ngFor="let review of reviews">
+                <b class="review__user">{{ review.username }}</b>
+                <p class="review__content">{{ review.content }}</p>
+            </article>
+        </section>
+    </div>
+</app-window>

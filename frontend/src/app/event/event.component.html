@@ -1,0 +1,9 @@
+<app-window name="Event" [showName]="event.title" *ngIf="event$ | async as event">
+    <div class="event">
+        <div class="event__details" (click)="onAction(event.url)">
+            <b class="event__date"><mat-icon>schedule</mat-icon>{{ event.date }}</b>
+            <h1 class="event__title">{{ event.title }}</h1>
+        </div>
+        <img class="event__image" [src]="event.imageUrl">
+    </div>
+</app-window>

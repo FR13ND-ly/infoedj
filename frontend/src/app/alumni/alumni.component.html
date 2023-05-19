@@ -1,0 +1,8 @@
+<app-window name="Alumni">
+    <div class="folder-content">
+        <div class="file" *ngFor="let member of alumni" (click)="onOpenMob(member)" (dblclick)="onOpen(member)" tabindex="-1">
+            <img class="file__image" [src]="member.imageUrl">
+            <span class="file__name">{{ member.name }}.prtfl</span>
+        </div>
+    </div>
+</app-window>

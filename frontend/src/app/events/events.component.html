@@ -1,0 +1,14 @@
+<app-window name="Events">
+  <div class="folder-content">
+    <div
+      class="file"
+      [class.file--new]="event.actual"
+      *ngFor="let event of events"
+      (click)="onOpenMob(event)"
+      (dblclick)="onOpen(event)"
+      tabindex="-1">
+      <img class="file__image" [src]="event.previewImg" />
+      <p class="file__name">{{ event.title }}.evnt</p>
+    </div>
+  </div>
+</app-window>

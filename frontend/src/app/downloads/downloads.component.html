@@ -1,0 +1,13 @@
+<app-window name="Downloads">
+    <div class="folder-content">
+        <div
+          class="file" 
+          *ngFor="let file of files"
+          tabindex="-1"
+          (dblclick)="onOpen(file.name)"
+          (click)="onOpenMob(file.name)">
+          <img class="file__image" [src]="file.imageUrl" >
+            <p>{{ file.name }}.exe</p>
+        </div>
+    </div>
+</app-window>

@@ -1,0 +1,14 @@
+<app-window
+    name="Image"
+    [showName]="images[vs.index].name + '.img'"
+    *ngIf="{ index: imageIndex$ | async } as vs">
+    <div class="image-wrapper">
+        <div class="left" (click)="previous(vs.index)">
+            <mat-icon>chevron_left</mat-icon>
+        </div>
+        <img class="image" [src]="images[vs.index].imageUrl" />
+        <div class="right" (click)="next(vs.index)">
+            <mat-icon>chevron_right</mat-icon>
+        </div>
+    </div>
+</app-window>

@@ -1,0 +1,24 @@
+<app-window name="Resolve">
+    <div class="content">
+        <ng-container *ngIf="user$ | async as user else notAuthenticated">
+            <form #resolveForm="ngForm" (submit)="onSubmit(resolveForm, user)" class="form" >
+                <div class="question"><span class="question__index">{{user.resolveLevel + 1}}</span>. <div [innerHTML]="resolves[user.resolveLevel].question"></div></div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Input</mat-label>
+                    <input matInput ngModel name="answer">
+                </mat-form-field>
+                <button color="primary" mat-stroked-button>Resolve</button>
+            </form>
+        </ng-container>
+        <ng-template #notAuthenticated>
+            <h1>You need to authenticate</h1>
+        </ng-template>
+        <div class="message-wrapper" *ngIf="message$ | async as message" (click)="onNext()">
+            <div 
+                class="message mat-elevation-z4"
+                [class.message--correct]="message == 'Correct!!!'"
+                [class.message--incorrect]="message == 'Wrong'"
+                >{{ message }}</div>
+        </div>
+    </div>
+</app-window>
